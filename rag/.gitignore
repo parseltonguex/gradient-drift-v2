@@ -1,0 +1,9 @@
+# Ignore Git folder when syncing to S3
+.git/
+
+# macOS junk files
+.DS_Store
+
+# Node modules (if ever applicable)
+node_modules/
+

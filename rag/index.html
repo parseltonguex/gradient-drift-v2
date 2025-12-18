@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gradient Drift — RAG Search Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <!-- HEADER -->
+  <header class="masthead">
+    <div class="brand">
+      <h1 class="logo">Gradient Drift</h1>
+    </div>
+
+    <div class="mast-actions">
+
+    
+      <a class="btn btn-primary" href="#request-access">Request Access</a>
+      <a class="btn btn-primary"
+         href="https://rag.gradientdrift.com"
+         target="_blank">
+        Open Demo
+      </a>
+      <a class="btn btn-secondary" href="../index.html">← Back to Homepage</a>
+    </div>
+  </header>
+
+  <!-- GRID LAYOUT -->
+  <main id="content" class="layout">
+
+    <!-- TABLE OF CONTENTS -->
+    <nav class="toc" aria-label="On this page">
+      <h2 class="toc-title">Contents</h2>
+      <ol>
+        <li><a href="#synopsis">Synopsis</a></li>
+        <li><a href="#executive-summary">Executive Summary</a></li>
+        <li><a href="#context">Context</a></li>
+        <li><a href="#problem-statement">Problem Statement</a></li>
+        <li><a href="#success-criteria">Success Criteria</a></li>
+        <li><a href="#functional-requirements">Functional Requirements</a></li>
+        <li><a href="#non-functional-requirements">Non-Functional Requirements</a></li>
+        <li><a href="#requirement-to-feature-mapping">Feature-to-Requirement Mapping</a></li>
+        <li><a href="#solution-overview">Solution Overview</a></li>
+        <li><a href="#implementation">Implementation</a></li>
+        <li><a href="#testing-results">Testing & Results</a></li>
+        <li><a href="#reflections-lessons-learned">Reflections & Lessons Learned</a></li>
+      </ol>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <article class="doc">
+
+      <h2 id="title" class="section-title">Project&nbsp;1&nbsp;-&nbsp;RAG&nbsp;Search&nbsp;Assistant</h2>
+
+      <h3 id="synopsis">Synopsis</h3>
+
+       <p>
+        RAG Search Assistant is a secure internal AI tool built for Aurenis, enabling staff to instantly query 
+        organisational knowledge using natural language. Designed and deployed end-to-end, leveraging Claude (Anthropic), Bedrock, 
+        Pinecone, Amazon Titan Embeddings and fully serverless AWS infrastructure.
+       </p>
+
+      <!-- EXECUTIVE SUMMARY -->
+      <h3 id="executive-summary">Executive Summary</h3>
+
+      <p>
+        Aurenis, an under-performing Healthcare company, has faced 3 consecutive quarters of stagnation. 
+        Their recent lackluster performance is due in large part to the emergence of fierce new rivals who 
+        have made market conditions significantly more competitive. This has been borne out by the sudden 
+        loss of two of the business’s largest customers in quick succession. While both factors have had a 
+        devastating impact on Aurenis’ once-dominant market position, this alone does not represent the 
+        complete picture. For quite some time, Aurenis’s staff on the ground have been battling against a 
+        variety of operational challenges that have made it increasingly difficult for them to maintain the 
+        level of quality and output that had been a hallmark of the business to date.
+      </p>
+
+      <p>
+        Despite being notoriously risk-averse when it comes to embracing new technologies, the business 
+        imperative coupled with the arrival of an ambitious new CTO has compelled the firm to take immediate 
+        action. The company has decided to break with tradition and implement the latest AI enterprise 
+        software across their customer-facing teams. A new RAG Search Assistant tool will be aggressively 
+        rolled out among the Sales, Support and Operations Teams with the stated aim of shortening the time 
+        it takes to close new business, onboard customers and resolve customer issues, which in turn is 
+        expected to lead to vastly superior CSAT scores. It is hoped that the initiative will not only drive 
+        growth but propel Aurenis back toward the market-leading position it once held for many years.
+      </p>
+
+
+      <!-- CONTEXT -->
+      <h3 id="context">Context</h3>
+
+      <p>
+        Aurenis, a medium-sized Healthcare company with a presence in 4 markets is facing a major inflection 
+        point. The business has consistently failed to meet the ambitious targets set by the Leadership team 
+        and investor confidence is at an all-time low, with the company share price veering towards terminal 
+        decline. If the business climate was unfavourable on a macro level, the sentiment among staff 
+        operating at the grassroots was decidedly worse.
+      </p>
+
+      <p>
+        A key bone of contention among workers in customer-facing roles has been the company’s over-reliance 
+        on outdated processes and systems leading them to experience constant burnout and the feeling of 
+        having to run on a perpetual treadmill merely to stand still. Customer service excellence is the 
+        company’s core value. It remains a deeply rooted part of its culture. Employees derive much of their 
+        self-worth from their ability to consistently over-deliver at speed, and so they feel deeply 
+        frustrated about having to spend a significant proportion of their time continuously trawling through 
+        Slack threads, Jira tickets and internal Confluence pages just to be able to locate the information 
+        they need to support customers. In fact, a recent audit revealed that over 200 hours a week are 
+        dedicated to this very task alone.
+      </p>
+
+      <p>
+        With key customers defecting to competitors due to the perception that they can be better served 
+        elsewhere, Aurenis’ newly-appointed CTO has identified this as a key area to address in order to 
+        reverse the company’s fortunes, and on a more personal level, make a major impact early on in his 
+        tenure.
+      </p>
+
+
+      <!-- PROBLEM STATEMENT -->
+      <h3 id="problem-statement">Problem Statement</h3>
+
+      <p>
+        Fundamentally this project seeks to explore the extent to which the firm can reduce wasted time spent 
+        locating knowledge across tools, while improving employee morale and customer satisfaction.
+      </p>
+
+      <p>In addition, the project aims to investigate the following key questions:</p>
+
+      <ul>
+        <li>Can access to business knowledge be centralised via natural language?</li>
+        <li>Can AI tools be trusted to deliver accurate information free of hallucinations and other errors?</li>
+        <li>Is such a tool intuitive to use and accessible to a wide pool of non-technical users?</li>
+        <li>Does the tool’s presence directly correlate with increased customer satisfaction and employee morale?</li>
+        <li>Can the tool easily be incorporated into Support teams’ day-to-day workflows without the need for extensive training?</li>
+        <li>Does the tool require a substantial amount of maintenance and upkeep?</li>
+      </ul>
+
+      <p>
+        Together, these questions define the scope and criteria by which the success of the RAG Search 
+        Assistant will be evaluated.
+      </p>
+
+
+      <!-- SUCCESS CRITERIA -->
+      <h3 id="success-criteria">Success Criteria</h3>
+
+      <p>The success of this project will be determined by the following criteria:</p>
+
+      <ol class="indented">
+        <li>A fully secure system only accessible to authorised users.</li>
+        <li>A user-friendly interface with low latency which encourages fast adoption.</li>
+        <li>A stable and dependable resource that staff can consistently rely on.</li>
+        <li>High levels of factual accuracy and contextual awareness in responses.</li>
+        <li>The ability to tailor answers precisely to the user’s question and intent.</li>
+      </ol>
+
+      <p>These criteria will guide how the project’s impact is assessed following implementation.</p>
+
+
+      <!-- FUNCTIONAL REQUIREMENTS -->
+      <h3 id="functional-requirements">Functional Requirements</h3>
+
+      <ul>
+        <li><strong>Core Functionality</strong>
+          <ul>
+            <li>The application must allow users to query proprietary company knowledge via natural language.</li>
+            <li>It must return answers grounded in internal data (RAG-based responses).</li>
+            <li>Responses must be tailored based on the user’s question and intent.</li>
+          </ul>
+        </li>
+
+        <li><strong>User Interaction</strong>
+          <ul>
+            <li>The app must deliver a smooth user experience, with responses returned within 2–3 seconds.</li>
+            <li>The tool must be intuitive and easy to use.</li>
+            <li>The product must integrate cleanly into existing Support workflows with minimal training.</li>
+          </ul>
+        </li>
+
+        <li><strong>Security</strong>
+          <ul>
+            <li>The application must support robust user authentication.</li>
+            <li>Role-based access controls are essential.</li>
+          </ul>
+        </li>
+      </ul>
+
+
+      <!-- NON-FUNCTIONAL REQUIREMENTS -->
+      <h3 id="non-functional-requirements">Non-Functional Requirements</h3>
+
+      <ul>
+        <li><strong>Security</strong>
+          <ul>
+            <li>Rate-limiting and DDoS protection must be enforced.</li>
+            <li>IAM must ensure only authorised users have the appropriate level of access.</li>
+            <li>The solution must observe compliance requirements with full logging and monitoring.</li>
+            <li><strong>Encryption</strong>
+              <ul>
+                <li><strong>In Transit:</strong> Data must be encrypted with HTTPS.</li>
+                <li><strong>At Rest:</strong> All stored data must be encrypted.</li>
+                <li><strong>Key Management:</strong> Key rotation must be automated and centrally managed.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li><strong>Fault-Tolerance & Availability</strong>
+          <ul>
+            <li>Occasional outages are acceptable for an internal application.</li>
+            <li>The system must be restorable quickly if it goes down.</li>
+          </ul>
+        </li>
+
+        <li><strong>Scalability</strong>
+          <ul>
+            <li>The system must scale to support ~30–40 internal users.</li>
+            <li>Traffic patterns will be predictable with light morning spikes.</li>
+          </ul>
+        </li>
+
+        <li><strong>Geographic Distribution</strong>
+          <ul>
+            <li>User base is UK-only; multi-region deployment is unnecessary.</li>
+          </ul>
+        </li>
+
+        <li><strong>Storage</strong>
+          <ul>
+            <li>A vector store is required to hold embeddings.</li>
+            <li>Object storage is required to store model artefacts.</li>
+          </ul>
+        </li>
+
+        <li><strong>Operational Overhead & Management</strong>
+          <ul>
+            <li>The solution should require minimal manual intervention.</li>
+            <li>The Aurenis team favour serverless due to auto-scaling benefits.</li>
+          </ul>
+        </li>
+      </ul>
+
+
+      <!-- FEATURE ↔ REQUIREMENT MAPPING -->
+      <h3 id="requirement-to-feature-mapping">Feature-to-Requirement Mapping</h3>
+
+      <table class="req-map">
+        <thead>
+          <tr>
+            <th>Requirement</th>
+            <th>Mapped Feature / Service</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>User Authentication</td>
+            <td>Amazon Cognito Hosted UI (PKCE)</td>
+            <td>Security</td>
+          </tr>
+          <tr>
+            <td>Secure API Access</td>
+            <td>API Gateway JWT Authorizer</td>
+            <td>Security</td>
+          </tr>
+          <tr>
+            <td>Rate Limiting & DDoS Protection</td>
+            <td>CloudFront + AWS WAF</td>
+            <td>Security</td>
+          </tr>
+          <tr>
+            <td>Data Encryption (In Transit)</td>
+            <td>HTTPS via CloudFront + API Gateway</td>
+            <td>Security</td>
+          </tr>
+          <tr>
+            <td>Data Encryption (At Rest)</td>
+            <td>Pinecone Serverless + S3 Default Encryption</td>
+            <td>Security</td>
+          </tr>
+          <tr>
+            <td>Key Rotation</td>
+            <td>KMS-managed encryption</td>
+            <td>Security</td>
+          </tr>
+          <tr>
+            <td>NL Querying</td>
+            <td>Bedrock Embeddings + RAG Pipeline</td>
+            <td>Core Functionality</td>
+          </tr>
+          <tr>
+            <td>Grounded Answers</td>
+            <td>Pinecone Vector Database</td>
+            <td>Core Functionality</td>
+          </tr>
+          <tr>
+            <td>Low Latency</td>
+            <td>Lambda + Bedrock (Claude Sonnet)</td>
+            <td>Performance</td>
+          </tr>
+          <tr>
+            <td>Content Delivery</td>
+            <td>CloudFront CDN</td>
+            <td>Performance</td>
+          </tr>
+          <tr>
+            <td>Serverless Scaling</td>
+            <td>Lambda</td>
+            <td>Scalability</td>
+          </tr>
+          <tr>
+            <td>Internal Throughput</td>
+            <td>API Gateway HTTP API</td>
+            <td>Scalability</td>
+          </tr>
+          <tr>
+            <td>Minimal Management</td>
+            <td>Fully Serverless Architecture</td>
+            <td>Ops</td>
+          </tr>
+          <tr>
+            <td>Simplified Deployment</td>
+            <td>S3 Static Hosting + Lambda Packaging</td>
+            <td>Ops</td>
+          </tr>
+          <tr>
+            <td>Storage</td>
+            <td>Pinecone + S3</td>
+            <td>Storage</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <!-- SOLUTION OVERVIEW -->
+      <h2 id="solution-overview">Solution Overview</h2>
+
+      <p class="subtitle">
+        This section outlines the system design and implementation strategy for the RAG Search Assistant,
+        highlighting architectural decisions, functional workflows, and non-functional considerations.
+      </p>
+
+      <hr>
+
+      <h3 id="key-architectural-decisions">Key Architectural Decisions</h3>
+
+      <h4>Data Source &amp; Embeddings</h4>
+      <ul>
+        <li>BMW worldwide sales dataset (2010–2024), sourced from Kaggle.</li>
+        <li>Structured, narrow domain makes it ideal for accuracy testing.</li>
+        <li>Amazon Titan Embeddings used for embedding generation.</li>
+      </ul>
+
+      <h4>Vector Store</h4>
+      <ul>
+        <li>Pinecone as primary vector database.</li>
+        <li>Fallbacks: OpenSearch, Kendra, Bedrock Knowledge Bases.</li>
+      </ul>
+
+      <h4>Model Strategy</h4>
+      <ul>
+        <li>Model-agnostic design, allowing easy swapping.</li>
+        <li>Considered: Claude 3 Sonnet, Titan Text, DeepSeek V2.</li>
+      </ul>
+
+      <h4>Deployment Strategy</h4>
+      <ul>
+        <li>Local development → Serverless production (Lambda + API Gateway).</li>
+        <li>Low-maintenance, high-performance architecture.</li>
+      </ul>
+
+      <hr>
+
+
+      <!-- FUNCTIONAL FLOW -->
+      <h3 id="functional-flow">Functional Flow</h3>
+
+      <h4>Phase 1: Data Processing</h4>
+
+      <p>The following diagram outlines the embedding + indexing workflow:</p>
+
+      <p>
+        <img src="img/dataProcessing.png" alt="Data Processing Pipeline" class="diagram">
+      </p>
+
+      <h5>Workflow Summary</h5>
+      <ul>
+        <li>Chunk raw CSV data.</li>
+        <li>Embed using Titan Embeddings via Bedrock.</li>
+        <li>Store vectors in Pinecone with metadata.</li>
+      </ul>
+
+      <hr>
+
+      <h4>Phase 2: Retrieval and Generation</h4>
+
+      <p>The diagram below visualises the runtime flow of query resolution:</p>
+
+      <p>
+        <img src="img/retrieval.png" alt="Retrieval Flow Diagram" class="diagram">
+      </p>
+
+      <h5>Workflow Summary</h5>
+      <ol class="indented">
+        <li>User submits a query.</li>
+        <li>App receives and processes query.</li>
+        <li>Query is embedded → Pinecone top-k retrieval.</li>
+        <li>Retrieved chunks + query → grounded prompt.</li>
+        <li>Prompt sent to Bedrock.</li>
+        <li>Model (e.g., Claude Sonnet) generates response.</li>
+        <li>Response returned to app.</li>
+        <li>App returns final answer.</li>
+      </ol>
+
+      <hr>
+
+      <h3 id="runtime-architecture">Architectural Sequence &amp; Runtime Architecture</h3>
+
+<p>
+  The complete runtime architecture is illustrated below, showing how user identity, front-end routing,
+  application logic, AI inference, and observability layers interact:
+</p>
+
+<p>
+  <img src="img/RAG_Search-3.png" 
+       alt="Runtime Architecture Diagram" 
+       class="diagram">
+</p>
+
+<h4>Identity</h4>
+<ul>
+  <li>Users authenticate via <strong>Cognito</strong> and receive an access token.</li>
+  <li>The token is included with all requests to validate identity and authorisation.</li>
+</ul>
+
+<h4>Edge</h4>
+<ul>
+  <li>Requests pass through <strong>CloudFront</strong>, where TLS is enforced.</li>
+  <li><strong>AWS WAF</strong> applies rate-limiting and threat mitigation.</li>
+  <li>Validated traffic is forwarded to <strong>API Gateway</strong>.</li>
+</ul>
+
+<h4>Application</h4>
+<ul>
+  <li><strong>API Gateway</strong> routes valid requests to the Lambda function.</li>
+  <li>Lambda retrieves API keys and secrets from <strong>Secrets Manager</strong>.</li>
+  <li>Lambda queries <strong>Pinecone</strong> for top-k relevant context chunks.</li>
+  <li>Lambda assembles a grounded prompt and forwards it to <strong>Bedrock</strong>.</li>
+</ul>
+
+<h4>Data &amp; AI</h4>
+<ul>
+  <li>Bedrock forwards the prompt to the selected model (e.g., Claude 3 Sonnet).</li>
+  <li>The model generates a grounded, context-aware response.</li>
+  <li>Bedrock returns the output to Lambda, which forwards it to the front end.</li>
+</ul>
+
+<h4>Observability &amp; Cost Control</h4>
+<ul>
+  <li><strong>CloudWatch</strong> captures application logs and metrics.</li>
+  <li><strong>CloudTrail</strong> records all API activity for auditing.</li>
+  <li><strong>AWS Budgets</strong> monitors spend and triggers alerts.</li>
+</ul>
+
+<hr>
+
+<h3 id="final-notes">Final Notes</h3>
+
+<p class="note">
+  This architecture reflects a scalable, low-maintenance deployment strategy that balances security, 
+  performance, and usability. All decisions were made with real-world adoption, developer efficiency, 
+  and measurable business impact in mind.
+</p>
+
+<h3 id="implementation">Implementation</h3>
+
+<!-- 1. Deployment Roadblock -->
+<h4 id="deployment-roadblock-python-packaging">Deployment Roadblock: Python Packaging on macOS for Lambda</h4>
+
+<p>
+  Surprisingly, the most challenging part of implementation turned out to be deploying the application 
+  to AWS Lambda. The process of uploading the application code from my local machine to Lambda took well 
+  over an hour, before continually failing with an 
+  <code>Unable to import module 'backend.main': No module named 'pydantic_core._pydantic_core'</code> 
+  error message.
+</p>
+
+<p>
+  This was incredibly frustrating — so much so that I was strongly considering opting for either EC2 or 
+  Fargate instead, though I ultimately decided to see it through as serverless compute was identified as 
+  a key requirement during discovery.
+</p>
+
+<p>
+  The issue stemmed from a mismatch between Lambda’s Python 3.12 runtime, which runs on Amazon Linux 
+  (x86_64), and my local macOS development environment (ARM64). Core Python packages such as NumPy, 
+  Pandas, and Pydantic contain compiled binaries, and therefore must be built on a compatible 
+  architecture to run successfully on Lambda.
+</p>
+
+<p>
+  Thankfully, the solution was relatively straightforward. I spun up a temporary Linux-based EC2 instance 
+  specifically to recompile Pydantic and the other impacted libraries. This appears to be a well-known 
+  workaround when working with compiled dependencies on Lambda, though it is not always clearly 
+  documented. Aside from a few inevitable hiccups assigning the correct IAM role and policies, I was able 
+  to repackage the libraries and upload them to Lambda without further issues.
+</p>
+
+<p>
+  For any Mac-based developer working with compiled Python libraries, this architecture mismatch will 
+  require a Linux build environment — whether via EC2, Docker, or another compatible approach.
+</p>
+
+
+<hr>
+
+<!-- 2. WAF + CloudFront -->
+<h4 id="waf-cloudfront-attachment">Attaching WAFs to CloudFront: The us-east-1 Rule and Its Side Effects</h4>
+
+<p>
+  The setup of the Web Application Firewall (WAF) presented the next major implementation hurdle. 
+  The first issue arose when I mistakenly created a <strong>regional WAF in <code>eu-west-2</code> 
+  (London)</strong>. However, CloudFront only supports <strong>global WAFs created in 
+  <code>us-east-1</code> (N. Virginia)</strong>. As a result, any attempt to attach the WAF triggered 
+  <code>InvalidParameterException</code> errors. Matters were made worse by the AWS Console showing the 
+  WAF as successfully attached, while the CLI reported it as unattached — causing confusion and delaying 
+  debugging efforts.
+</p>
+
+<p>
+  The solution was to recreate the Web ACL in <code>us-east-1</code> with <code>Scope=CLOUDFRONT</code>, 
+  and attach it <strong>via the CloudFront Console</strong> rather than the CLI, which helped avoid 
+  further validation issues. The core CloudFront learning here is that 
+  <strong>all WAFs must be created and managed in <code>us-east-1</code></strong> to apply globally; 
+  regional WAFs will consistently fail to attach.
+</p>
+
+<p>
+  Unfortunately, the complications did not end there. Because my rate-limiting rule (100 requests per 
+  5 minutes per IP) lived inside the same WAF, it was also unable to take effect when the WAF failed to 
+  attach. This went unnoticed for a considerable period, as unrelated 403 errors created the illusion that 
+  the rule was functioning when, in reality, it was not active at all.
+</p>
+
+<p>
+  Ultimately, the rate-limit rule began functioning automatically once the WAF was properly attached in 
+  the correct region.
+</p>
+
+
+<hr>
+
+<!-- 3. Authentication Debugging -->
+<h4 id="auth-red-herring">When Authentication Isn't the Problem: Debugging a CloudFront Red Herring</h4>
+
+<p>
+  Authentication proved to be by far the most difficult aspect of the entire implementation, as it 
+  contained a myriad of issues which, on multiple occasions, felt insurmountable.
+</p>
+
+<ol class="indented">
+  <li>
+    <strong>Hosted UI: Missing ‘Sign-in’ Behaviour</strong><br>
+    The first major blocker came from AWS Cognito’s Hosted UI being completely unresponsive when 
+    clicking on the “Sign in” button. This was due to importing the <em>browser build</em> of 
+    <code>oidc-client-ts</code> instead of the correct ESM module. The issue was resolved by switching 
+    to the proper ESM import:
+    <pre class="code-block"><code>
+import { UserManager }
+  from "https://cdn.jsdelivr.net/npm/oidc-client-ts@2.0.4/dist/esm/oidc-client-ts.min.js";
+    </code></pre>
+  </li>
+
+  <li>
+    <strong>Callback Page Not Working / Login Loop</strong><br>
+    After redirecting from Cognito’s hosted authentication journey, the callback page either did nothing 
+    or displayed <code>Error: no authorization code returned</code>. The root causes were incomplete 
+    handling of the OAuth <code>code</code> parameter and a slightly incorrect callback path. Switching 
+    from a raw token exchange script to the managed <code>userManager.signinCallback()</code> function 
+    resolved the issue.
+  </li>
+
+  <li>
+    <strong>Invalid Scope Error</strong><br>
+    A recurring error occurred where sign-ins redirected back to the callback page with:
+    <pre class="code-block"><code>
+error=invalid_request&error_description=invalid_scope
+    </code></pre>
+    This was caused by the Cognito App Client lacking the <code>profile</code> scope — only 
+    <code>email</code> and <code>phone</code> had been selected. OIDC requires 
+    <code>openid</code> plus at least one of <code>email</code>, <code>profile</code>, or 
+    <code>phone</code>. Adding the <code>profile</code> scope resolved the issue fully.
+  </li>
+
+  <li>
+    <strong>Incorrect Front-End Behaviour Misdiagnosed as Auth Failure</strong><br>
+    At this point, it seemed like the entire authentication flow was cursed: the sign-in button didn’t 
+    work, the UI didn’t update, redirects failed, and Cognito occasionally displayed error messages. 
+    The behaviour was inconsistent and unpredictable, giving the impression of a fundamentally broken 
+    authentication system.
+    <br><br>
+    In reality, the authentication pipeline was implemented correctly. The real issue was that the 
+    <strong>front end was serving a stale JavaScript file</strong>. S3 object overwrites were silently 
+    failing, causing CloudFront to cache outdated assets. Once the correct JS bundle — with the proper 
+    <code>redirectUri</code>, metadata, and module imports — was deployed, the entire flow snapped into 
+    place.
+    <br><br>
+    Ultimately, the outdated JS prevented event listeners from attaching, blocked UI updates, and 
+    stopped the PKCE flow from triggering. Cognito was throwing errors only because the old bundle was 
+    passing malformed redirect URIs. What looked like OAuth failures were, in reality, front-end 
+    deployment issues in disguise.
+  </li>
+</ol>
+
+<p>
+  This experience was a powerful reminder that in distributed systems, what appears to be an 
+  authentication failure may actually be a front-end deployment issue.
+</p>
+
+<h3 id="testing-results">Testing & Results</h3>
+
+<h4 id="ui-screengrab">RAG Search Assistant — UI Snapshot</h4>
+
+<p>
+  The screenshot below shows the final user interface for the RAG Search Assistant as deployed 
+  during testing. This capture reflects the production-ready layout, authentication controls, 
+  model selector, Top-k parameter, and query input surface used to perform evaluation.
+</p>
+
+<p>
+  <img src="img/rag-search-ui.jpg"
+       alt="RAG Search Assistant UI Screenshot"
+       class="screenshot">
+</p>
+
+<h3 id="reflections-lessons-learned">Reflections & Lessons Learned</h3>
+
+<h4 id="security-first-class">Security as a First Class Concern</h4>
+
+<p>
+  Having previously walked away from many projects due to technical stalemates or shifting scope,
+  it was deeply satisfying to see this project through and deliver a tangible product that met the majority
+  of its goals. Fortunately, I was guided by a well-defined process that I have iterated and improved
+  over time, which helped me anticipate critical issues and mitigate them early on.
+</p>
+
+<p>
+  That said, there were clear opportunities to improve how security was handled. While it was a key
+  consideration at the start of the project, in hindsight it should have been baked into every feature rather
+  than treated as a parallel stream. Many of the implementation challenges ultimately touched on security in
+  one form or another.
+</p>
+
+<p>
+  Going forward, I’ll take greater care to analyse every component through the lens of its attack surface and
+  potential threat vectors. I also intend to incorporate more rigorous testing and security hardening during
+  design and delivery, in order to avoid the unacceptable outcome of a vulnerability slipping into production.
+</p>
+
+
+<h4 id="rag-future-ai">RAG and the Future of AI at Work</h4>
+
+<p>
+  The RAG Search project provided an excellent opportunity to explore some of the core principles businesses
+  grapple with when adopting AI into their organisations. Retrieval-Augmented Generation is clearly a critical
+  enabler for businesses looking to leverage LLMs in ways that reflect internal context and data, while also
+  reducing many of the reliability concerns that typically accompany this technology.
+</p>
+
+<p>
+  Natural language interfaces are emerging as a central pillar of the AI-native workplace. They offer a powerful,
+  intuitive entry point for employees to perform higher-quality work at speed. In today’s climate, it’s difficult
+  not to capture the interest of business leaders when articulating the concrete, near-term benefits of these tools.
+</p>
+
+<p>
+  One development I anticipate is the arrival of AI Enablement Officers — a new kind of internal role responsible
+  for helping workforces adopt AI tools effectively. While these technologies are incredibly powerful, they are not
+  self-explanatory. Great care must be taken not only to train users, but to foster a culture of responsible AI
+  usage that acknowledges the risks of over-reliance and the potential loss of personal agency it can bring.
+</p>
+
+
+<h4 id="whats-next">What’s Next</h4>
+
+<p>
+  For my next project, I intend to explore many of the themes raised by the RAG Search Assistant in greater depth.
+  I am especially keen to take any available opportunity to better understand how business leaders view LLM adoption,
+  and to identify the practical solutions that enable responsible implementation at scale.
+</p>
+
+<p>
+  While RAG features heavily in today’s AI zeitgeist, Agentic Orchestration represents the other half of the
+  enterprise AI equation. Where RAG Search helped clarify how businesses can understand what is happening inside
+  their organisations, my next project will focus on Enterprise Execution — specifically, how AI can help
+  organisations act intelligently across systems. This is where agentic systems come into play.
+</p>
+
+<p>
+  In addition, I am interested in exploring open-source solutions such as LLaMA, DeepSeek, Mistral, and Falcon.
+  I also intend to explore Azure OpenAI, with a view to creating a multi-cloud solution spanning both AWS and
+  Azure. This will provide an excellent opportunity to demonstrate how businesses can safely interact with AI
+  systems in a way that addresses organisational concerns around security, data sovereignty, and compliance.
+</p>
+
+    </article>
+    
+
+    <!-- LEAD CAPTURE FORM -->
+    <section class="lead-capture doc" id="request-access">
+      <h2 class="section-title">Request Access to RAG Search Assistant</h2>
+      <p>If you're interested in exploring the live app, complete the form below and we’ll send you an invite.</p>
+
+      <form action="https://formspree.io/f/mblbowzv" method="POST" class="form">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required />
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required />
+
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="4"
+          placeholder="Tell us how you'd like to use the app..."></textarea>
+
+        <p class="form-note">
+          By submitting this form, you agree that your information will be used solely to review your access request.
+          You may request data deletion at any time by contacting us.
+        </p>
+
+        <label class="checkbox">
+          <input type="checkbox" name="consent" required />
+          I consent to the use of my data as described above.
+        </label>
+
+        <button type="submit" class="btn btn-primary">Request Access</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2025 Gradient Drift</p>
+  </footer>
+</body>
+</html>
