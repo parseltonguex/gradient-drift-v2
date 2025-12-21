@@ -490,3 +490,68 @@ ul ul{
   margin: 2rem auto;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
 }
+
+.indented-list {
+  padding-left: 2rem;
+}
+
+
+/* -----------------------------------------------------------
+   Performance Table
+----------------------------------------------------------- */
+
+.perf-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.perf-caption {
+  caption-side: top;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink-2);
+  margin-bottom: 0.75rem;
+  text-align: left;
+  padding: 0.5rem 0;
+}
+
+.perf-table th,
+.perf-table td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.perf-table th {
+  background: var(--bg1);
+  font-weight: 700;
+  color: #111827;
+  font-size: 0.96rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.perf-table td:first-child {
+  font-weight: 600;
+  text-align: left;
+  background: #f9fafb;
+  color: #111;
+}
+
+.perf-table tbody tr:nth-child(even) {
+  background-color: #f8f9fb;
+}
+
+.perf-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+.perf-table td.yoy {
+  color: #059669; /* Emerald green */
+  font-weight: 600;
+}
